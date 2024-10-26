@@ -279,3 +279,4 @@ llmprox/media/
 .envs/*
 !.envs/.local/
 .aider*
+.vercel
