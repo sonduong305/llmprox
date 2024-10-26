@@ -1,8 +1,6 @@
 # ruff: noqa: E501
 from .base import *  # noqa: F403
-from .base import INSTALLED_APPS
-from .base import MIDDLEWARE
-from .base import env
+from .base import INSTALLED_APPS, MIDDLEWARE, env
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -14,7 +12,7 @@ SECRET_KEY = env(
     default="wydDaLQ0EKhms9B6Y9a0t7NDkHio9KwynUNd2quzIxy81y0JpPZf6TKWHNo3cmbZ",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]  # noqa: S104
+ALLOWED_HOSTS = ["*"]  # noqa: S104
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -30,7 +28,8 @@ CACHES = {
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend",
+    "DJANGO_EMAIL_BACKEND",
+    default="django.core.mail.backends.console.EmailBackend",
 )
 
 # WhiteNoise
