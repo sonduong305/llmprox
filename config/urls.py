@@ -9,6 +9,8 @@ from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
+from llmprox.api import views as llm_views
+
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
@@ -35,7 +37,7 @@ urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
     # LLM endpoints
-    path("api/v1/completion/", llmprox.api.views.llm_completion, name="llm-completion"),
+    path("api/v1/completion/", llm_views.llm_completion, name="llm-completion"),
     # DRF auth token
     path("api/auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
