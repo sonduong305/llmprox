@@ -6,7 +6,6 @@ from django.conf import settings
 from litellm import completion
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def llm_completion(request):
     """
     Forward LLM completion requests to the appropriate provider via LiteLLM
