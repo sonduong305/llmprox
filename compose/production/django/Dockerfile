@@ -36,7 +36,7 @@ ENV BUILD_ENV=${BUILD_ENVIRONMENT}
 WORKDIR ${APP_HOME}
 
 RUN addgroup --system django \
-    && adduser --system --ingroup django django
+  && adduser --system --ingroup django django
 
 
 # Install required system dependencies
@@ -78,7 +78,7 @@ RUN chown -R django:django ${APP_HOME}
 
 USER django
 
-RUN DATABASE_URL="" \
+RUN POSTGRES_URL="" \
   DJANGO_SETTINGS_MODULE="config.settings.test" \
   python manage.py compilemessages
 
