@@ -21,3 +21,6 @@ djangorestframework==3.15.2  # https://github.com/encode/django-rest-framework
 django-cors-headers==4.5.0  # https://github.com/adamchainz/django-cors-headers
 # DRF-spectacular for api documentation
 drf-spectacular==0.27.2  # https://github.com/tfranzel/drf-spectacular
+
+# LiteLLM for LLM provider integration
+litellm==1.30.7  # https://github.com/BerriAI/litellm
