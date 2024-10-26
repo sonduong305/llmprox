@@ -81,6 +81,15 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Environment Variables
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+# Database
+# Using SQLite in-memory for testing only since we don't need a real database
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": ":memory:",
+    }
+}
+
 # Django REST Framework Configuration
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [

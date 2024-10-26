@@ -8,7 +8,7 @@ import llmprox.api.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 
-application = ProtocolTypeRouter(
+app = ProtocolTypeRouter(
     {
         "http": get_asgi_application(),
         "websocket": AuthMiddlewareStack(
