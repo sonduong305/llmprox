@@ -6,7 +6,8 @@
             "use": "@vercel/python",
             "config": {
                 "buildCommand": "sh ./build_files.sh",
-                "outputDirectory": "staticfiles"
+                "outputDirectory": "staticfiles",
+                "maxDuration": 60
             }
         }
     ],

@@ -82,6 +82,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_spectacular",
     "channels",
+    "adrf",
 ]
 
 LOCAL_APPS = [
