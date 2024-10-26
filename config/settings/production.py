@@ -1,4 +1,6 @@
 # ruff: noqa: E501
+import dj_database_url
+
 from .base import *  # noqa: F403
 from .base import DATABASES, INSTALLED_APPS, REDIS_URL, SPECTACULAR_SETTINGS, env
 
@@ -19,7 +21,6 @@ ALLOWED_HOSTS.extend(
 
 # DATABASES
 # ------------------------------------------------------------------------------
-import dj_database_url
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -158,6 +159,8 @@ SPECTACULAR_SETTINGS["SERVERS"] = [
     {"url": "https://llmprox.bysonduong.com", "description": "Production server"},
 ]
 # Your stuff...
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
