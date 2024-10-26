@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-./docker-manage.sh local run --rm django "$@"
