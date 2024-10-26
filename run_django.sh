@@ -55,9 +55,6 @@ run_server() {
     echo "Running migrations..."
     python manage.py migrate
 
-    echo "Installing or upgrading daphne if not present..."
-    pip install --upgrade daphne channels
-
     echo "Starting Daphne ASGI server..."
     daphne -b 0.0.0.0 -p 8000 config.asgi:application
 }

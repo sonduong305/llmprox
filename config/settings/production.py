@@ -28,6 +28,8 @@ DATABASES = {
         conn_max_age=env.int("CONN_MAX_AGE", default=60),
     )
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = False
+
 
 # CACHES
 # ------------------------------------------------------------------------------
