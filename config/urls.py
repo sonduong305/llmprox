@@ -35,7 +35,7 @@ urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
     # LLM endpoints
-    path("api/v1/completion/", include("llmprox.api.views.llm_completion"), name="llm-completion"),
+    path("api/v1/completion/", llmprox.api.views.llm_completion, name="llm-completion"),
     # DRF auth token
     path("api/auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
