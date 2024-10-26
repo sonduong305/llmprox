@@ -19,22 +19,16 @@ class MessageSerializer(serializers.Serializer):
     )
 
 
-class LLMCompletionSerializer(serializers.Serializer):
+class LLMParamsSerializer(serializers.Serializer):
     model = serializers.CharField(
-        required=True,
+        required=False,
+        default="gpt-3.5-turbo",
         max_length=100,
         error_messages={"max_length": "Model name is too long"},
     )
-    messages = MessageSerializer(
-        many=True,
-        required=True,
-        error_messages={
-            "required": "Messages array is required",
-            "empty": "Messages array cannot be empty",
-        },
-    )
     temperature = serializers.FloatField(
         default=0.7,
+        required=False,
         min_value=0.0,
         max_value=2.0,
         error_messages={
@@ -44,6 +38,7 @@ class LLMCompletionSerializer(serializers.Serializer):
     )
     max_tokens = serializers.IntegerField(
         default=1000,
+        required=False,
         min_value=1,
         max_value=4096,
         error_messages={
@@ -51,15 +46,15 @@ class LLMCompletionSerializer(serializers.Serializer):
             "max_value": "max_tokens must be <= 4096",
         },
     )
-    top_p = serializers.FloatField(
-        default=1.0, min_value=0.0, max_value=1.0, required=False
+
+
+class LLMCompletionSerializer(serializers.Serializer):
+    messages = MessageSerializer(
+        many=True,
+        required=True,
+        error_messages={
+            "required": "Messages array is required",
+            "empty": "Messages array cannot be empty",
+        },
     )
-    frequency_penalty = serializers.FloatField(
-        default=0.0, min_value=-2.0, max_value=2.0, required=False
-    )
-    presence_penalty = serializers.FloatField(
-        default=0.0, min_value=-2.0, max_value=2.0, required=False
-    )
-    stop = serializers.ListField(
-        child=serializers.CharField(max_length=100), required=False, max_length=4
-    )
+    params = LLMParamsSerializer(required=False, default=dict)

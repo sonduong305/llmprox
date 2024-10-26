@@ -105,3 +105,5 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.MultiPartParser",
     ],
 }
+
+API_TOKEN = os.getenv("API_TOKEN")
