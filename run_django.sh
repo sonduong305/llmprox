@@ -50,15 +50,18 @@ check_postgres() {
     echo "PostgreSQL is up - executing command"
 }
 
-# Function to run Django commands
-run_django() {
+# Function to run Django/Daphne server
+run_server() {
     echo "Running migrations..."
     python manage.py migrate
 
-    echo "Starting Django development server..."
-    python manage.py runserver 0.0.0.0:8000
+    echo "Installing or upgrading daphne if not present..."
+    pip install --upgrade daphne channels
+
+    echo "Starting Daphne ASGI server..."
+    daphne -b 0.0.0.0 -p 8000 config.asgi:application
 }
 
 # Main execution
 check_postgres
-run_django
+run_server

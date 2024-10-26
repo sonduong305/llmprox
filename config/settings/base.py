@@ -81,12 +81,16 @@ THIRD_PARTY_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
+    "channels",
 ]
 
 LOCAL_APPS = [
     "llmprox.users",
     # Your stuff: custom apps go here
 ]
+
+# Channel Layers configuration (using in-memory for development)
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -312,3 +316,4 @@ SPECTACULAR_SETTINGS = {
 # LiteLLM Settings
 # ------------------------------------------------------------------------------
 OPENAI_API_KEY = env("OPENAI_API_KEY", default=None)
+ASGI_APPLICATION = "config.asgi.application"

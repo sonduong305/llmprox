@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "config/wsgi.py",
+            "src": "config/asgi.py",
             "use": "@vercel/python",
             "config": {
                 "buildCommand": "sh ./build_files.sh",
@@ -16,8 +16,12 @@
             "dest": "/static/$1"
         },
         {
+            "src": "/ws/(.*)",
+            "dest": "config/asgi.py"
+        },
+        {
             "src": "/(.*)",
-            "dest": "config/wsgi.py"
+            "dest": "config/asgi.py"
         }
     ]
 }

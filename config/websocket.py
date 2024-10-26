@@ -1,13 +1,15 @@
-async def websocket_application(scope, receive, send):
-    while True:
-        event = await receive()
+# config/websocket.py
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.urls import re_path
 
-        if event["type"] == "websocket.connect":
-            await send({"type": "websocket.accept"})
+from llmprox.api.consumers import LLMCompletionConsumer
 
-        if event["type"] == "websocket.disconnect":
-            break
+websocket_urlpatterns = [
+    re_path(r"ws/api/v1/completion/$", LLMCompletionConsumer.as_asgi()),
+]
 
-        if event["type"] == "websocket.receive":
-            if event["text"] == "ping":
-                await send({"type": "websocket.send", "text": "pong!"})
+websocket_application = ProtocolTypeRouter(
+    {
+        "websocket": URLRouter(websocket_urlpatterns),
+    }
+)
